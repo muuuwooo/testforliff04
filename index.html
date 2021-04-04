@@ -81,20 +81,14 @@
   
   <script>
     const liffId = "1655825743-jgJZz1Ae"
-    const Name = document.getElementById('profile_name');
     const id = document.getElementById('profile_id');
-    const Img = document.getElementById("profile_img");
  
     liff.init({liffId}).then(() => {
       if (liff.isLoggedIn()) {
         liff.getProfile()
           .then(profile => {
-            const name = profile.displayName;
-            const pic = profile.pictureUrl;
             const lineuserid = profile.userId;
-            Name.innerHTML = name;
             id.innerHTML = lineuserid;
-            Img.src = pic;
           })
           .catch((err) => {
             console.log('error', err);
