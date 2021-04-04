@@ -73,23 +73,33 @@
   </head>
   <body>
     <h1>LIFFテストページ</h1>
+    <img id="profile_img" class="profile" src=""/>
+    <h2 id="profile_name"></h2>
     <p>LIFFの作成を色々と試すためのページです。</p>
   </body>
   
-    <script>
-    const liffId = "1655825743-jgJZz1Ae"
+  <script>
+    const liffId = "1654391458-ZXkyBBy8"
     const Name = document.getElementById('profile_name');
     const Img = document.getElementById("profile_img");
  
     liff.init({liffId}).then(() => {
       if (liff.isLoggedIn()) {
+        liff.getProfile()
+          .then(profile => {
+            const name = profile.displayName;
+            const pic = profile.pictureUrl;
+            Name.innerHTML = name;
+            Img.src = pic;
+          })
+          .catch((err) => {
+            console.log('error', err);
+          });
       }
       else{
         liff.login();
       }
     })
- 
- 
   </script>
   
 </html>
