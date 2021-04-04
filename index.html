@@ -75,12 +75,14 @@
     <h1>LIFFテストページ</h1>
     <img id="profile_img" class="profile" src=""/>
     <h2 id="profile_name"></h2>
+    <h2 id="profile_id"></h2>
     <p>LIFFの作成を色々と試すためのページです。</p>
   </body>
   
   <script>
     const liffId = "1655825743-jgJZz1Ae"
     const Name = document.getElementById('profile_name');
+    const id = document.getElementById('profile_id');
     const Img = document.getElementById("profile_img");
  
     liff.init({liffId}).then(() => {
@@ -89,7 +91,9 @@
           .then(profile => {
             const name = profile.displayName;
             const pic = profile.pictureUrl;
+            const lineuserid = profile.userId;
             Name.innerHTML = name;
+            id.innerHTML = lineuserid;
             Img.src = pic;
           })
           .catch((err) => {
