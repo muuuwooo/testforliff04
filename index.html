@@ -82,8 +82,21 @@
 <p><input type="submit" value="送信"><input type="reset" value="リセット"></p>
 </form>
     
+  
+  <p>pass <span id="span2"></span></p>
+<input type="password" value="red" id="pass2" maxlength="5" />
+<input type="button" value="ボタン2" onclick="clickBtn3()" />
     
   </body>
+  
+
+<script>
+  function clickBtn3() {
+    const pass2 = document.getElementById("pass2");
+    pass2.value = "green";
+    document.getElementById("span2").textContent = pass2.value;
+  }
+</script>
   
   <script>
     const liffId = "1655825743-jgJZz1Ae"
