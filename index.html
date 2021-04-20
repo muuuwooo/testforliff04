@@ -76,14 +76,10 @@
     <h2 id="profile_id"></h2>
     <input type="text" name="profile_id" id="profile_id">
     <p>LIFFの作成を色々と試すためのページです。</p>
- 
-<form action="mail.php" method="post">
-<p><label>名前：<input type="text" name="name" id="profile_id" size="40"></label></p>
-<p><input type="submit" value="送信"><input type="reset" value="リセット"></p>
-</form>
-    
+
+    <input type="text" name="[line-user-id]" id="line-user-id">
   
-  <p>pass <span id="span2"></span></p>
+<p>pass <span id="span2"></span></p>
 <input type="password" value="red" id="pass2" maxlength="5" />
 <input type="button" value="ボタン2" onclick="clickBtn3()" />
     
@@ -98,6 +94,7 @@
   }
 </script>
   
+  <!--
   <script>
     const liffId = "1655825743-jgJZz1Ae"
     const id = document.getElementById('profile_id');
@@ -117,6 +114,28 @@
         liff.login();
       }
     })
+  </script>
+  -->
+  
+  <script>
+  const lineUserIdInput = document.querySelector('#line-user-id');
+liff
+  .init({
+    liffId: "1655825743-jgJZz1Ae"
+  })
+  .then(() => {
+    liff.getProfile()
+      .then((profile) => {
+        lineUserIdInput.value = profile.userId;
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+  
   </script>
   
 </html>
